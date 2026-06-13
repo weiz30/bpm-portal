@@ -2,6 +2,12 @@
 
 Cloudflare Workers + D1 based BPM portal starter.
 
+## Live Deployment
+
+- Worker URL: https://bpm-portal.weiz30.workers.dev
+- Cloudflare account: `2259832f71636dfcfad4aa9a1d61979d`
+- D1 database: `bpm-portal-db`
+
 ## Current Features
 
 - Login screen
