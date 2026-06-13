@@ -1,0 +1,52 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  account TEXT NOT NULL UNIQUE,
+  display_name TEXT NOT NULL,
+  email TEXT,
+  password_salt TEXT NOT NULL,
+  password_hash TEXT NOT NULL,
+  system_role TEXT NOT NULL DEFAULT 'employee',
+  roles_json TEXT NOT NULL DEFAULT '[]',
+  active INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  role_key TEXT NOT NULL UNIQUE,
+  name TEXT NOT NULL,
+  description TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS announcements (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  created_by INTEGER NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (created_by) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  read_at TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS sessions (
+  token TEXT PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  expires_at TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_announcements_created_at ON announcements(created_at);
+CREATE INDEX IF NOT EXISTS idx_messages_user_id ON messages(user_id);
