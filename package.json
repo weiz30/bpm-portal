@@ -1,0 +1,16 @@
+{
+  "name": "bpm-portal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BPM portal MVP built with Cloudflare Workers and D1.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create bpm-portal-db",
+    "db:migrate:local": "wrangler d1 execute bpm-portal-db --local --file=./schema.sql",
+    "db:migrate:remote": "wrangler d1 execute bpm-portal-db --remote --file=./schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
