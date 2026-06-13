@@ -5,4 +5,4 @@ compatibility_date = "2026-06-13"
 [[d1_databases]]
 binding = "DB"
 database_name = "bpm-portal-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "cc8eae3b-7b6c-4b89-a9a7-8383665761a1"
