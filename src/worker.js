@@ -353,6 +353,21 @@ const APP_HTML = `<!doctype html>
     .list{display:grid;gap:10px}.item{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fff}.meta{color:var(--muted);font-size:13px}.badge{display:inline-flex;align-items:center;min-height:24px;border-radius:8px;background:#eef3fb;color:#30425b;padding:0 8px;font-size:12px;font-weight:800;margin-right:6px}
     table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;font-size:14px}th{color:var(--muted);background:#f9fbfe}
     .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.wide{grid-column:1/-1}.notice{padding:10px 12px;border-radius:8px;background:#eef8f3;color:var(--green);font-weight:750}.error{background:#fff0f0;color:var(--danger)}
+    .appearance-picker{display:flex;align-items:center;gap:8px;margin:0;color:var(--muted);font-size:13px;font-weight:750;white-space:nowrap}.appearance-picker select{width:auto;min-width:128px;min-height:38px;padding:7px 30px 7px 10px;cursor:pointer}
+    body[data-style="night"]{--bg:#101827;--ink:#eef4ff;--muted:#b0bfd3;--panel:#1a2739;--line:#35465d;--accent:#72a9ff;--green:#7de0b5;--danger:#ff8a8a;--soft:#26364d;--field:#142033;--shadow:0 24px 70px rgba(0,0,0,.38);color-scheme:dark}
+    body[data-style="mint"]{--bg:#eff8f5;--ink:#173b34;--muted:#56766d;--panel:#fff;--line:#c8e1d9;--accent:#087f6c;--green:#167153;--danger:#b93838;--soft:#e1f2ec;--field:#fff;--shadow:0 20px 55px rgba(23,59,52,.12)}
+    body[data-style="contrast"]{--bg:#000;--ink:#fff;--muted:#fff;--panel:#050505;--line:#fff;--accent:#ffe600;--green:#7dffb2;--danger:#ff7272;--soft:#222;--field:#000;--shadow:0 0 0 2px #fff;color-scheme:dark}
+    body[data-style="paper"]{--bg:#f5efe3;--ink:#302b25;--muted:#716455;--panel:#fffaf0;--line:#ddcfb8;--accent:#a34b2a;--green:#397357;--danger:#a32626;--soft:#f0e4d1;--field:#fffdf8;--shadow:0 22px 55px rgba(74,50,29,.13)}
+    body[data-style="night"] header,body[data-style="mint"] header,body[data-style="paper"] header{background:var(--panel)}
+    body[data-style="night"] .card,body[data-style="night"] nav,body[data-style="night"] .login-card,body[data-style="night"] .item,body[data-style="night"] table,body[data-style="night"] input,body[data-style="night"] textarea,body[data-style="night"] select,body[data-style="mint"] .login-card,body[data-style="paper"] .login-card{background:var(--panel);color:var(--ink)}
+    body[data-style="night"] th{background:#202f44;color:var(--muted)}body[data-style="night"] .item{background:#172437}body[data-style="night"] .badge{background:#2c3d54;color:#e5eeff}body[data-style="night"] nav button.active,body[data-style="night"] nav button:hover{background:#293d59;color:var(--accent)}
+    body[data-style="mint"] .card,body[data-style="mint"] nav,body[data-style="mint"] .item,body[data-style="mint"] table{background:var(--panel)}body[data-style="mint"] th{background:#e7f4ef}body[data-style="mint"] .badge{background:#e1f2ec;color:#22594d}body[data-style="mint"] nav button.active,body[data-style="mint"] nav button:hover{background:#e1f2ec;color:var(--accent)}
+    body[data-style="contrast"] header,body[data-style="contrast"] .card,body[data-style="contrast"] nav,body[data-style="contrast"] .login-card,body[data-style="contrast"] .item,body[data-style="contrast"] table,body[data-style="contrast"] input,body[data-style="contrast"] textarea,body[data-style="contrast"] select{background:#050505;color:#fff;border-color:#fff}body[data-style="contrast"] th{background:#151515;color:#fff}body[data-style="contrast"] .badge{background:#ffe600;color:#000}body[data-style="contrast"] nav button.active,body[data-style="contrast"] nav button:hover{background:#ffe600;color:#000}body[data-style="contrast"] .btn.primary{background:#ffe600;border-color:#ffe600;color:#000}body[data-style="contrast"] :focus-visible{outline:3px solid #ffe600;outline-offset:3px}
+    body[data-style="paper"] .card,body[data-style="paper"] nav,body[data-style="paper"] .item,body[data-style="paper"] table{background:var(--panel)}body[data-style="paper"] th{background:#f0e7d7}body[data-style="paper"] .badge{background:#f0e4d1;color:#604630}body[data-style="paper"] nav button.active,body[data-style="paper"] nav button:hover{background:#f0e4d1;color:var(--accent)}
+    body[data-style="night"] .btn,body[data-style="night"] .item,body[data-style="night"] table{color:var(--ink)}body[data-style="night"] .btn{background:#1a2739;border-color:var(--line)}body[data-style="night"] .btn.primary{background:var(--accent);border-color:var(--accent);color:#101827}body[data-style="night"] .notice{background:#183b34;color:#7de0b5}body[data-style="night"] .notice.error{background:#492a32;color:#ffaaaa}
+    body[data-style="mint"] .btn,body[data-style="paper"] .btn{background:var(--panel);color:var(--ink)}body[data-style="mint"] .btn.primary,body[data-style="paper"] .btn.primary{background:var(--accent);color:#fff}body[data-style="mint"] .notice{background:#e1f2ec;color:var(--green)}body[data-style="paper"] .notice{background:#e9f1e8;color:var(--green)}
+    body[data-style="contrast"] .notice{background:#102d1d;color:#7dffb2}body[data-style="contrast"] .notice.error{background:#3a1010;color:#ff9a9a}
+    @media(max-width:860px){.topbar .appearance-picker{align-self:stretch}.topbar .appearance-picker select{flex:1}}
     @media(max-width:860px){.layout,.grid,.form-grid{grid-template-columns:1fr}nav{position:static}.topbar{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
@@ -360,6 +375,7 @@ const APP_HTML = `<!doctype html>
   <section id="loginView" class="login">
     <form id="loginForm" class="login-card">
       <div class="brand"><span class="mark">B</span><div><h1>BPM Portal</h1><p class="meta">簽核入口與內部協作平台 MVP</p></div></div>
+      <label class="appearance-picker">瀏覽風格<select class="style-select" aria-label="切換瀏覽風格"><option value="classic">經典藍白</option><option value="night">夜間深色</option><option value="mint">清新薄荷</option><option value="contrast">高對比</option><option value="paper">暖色紙感</option></select></label>
       <label>帳號<input name="account" autocomplete="username" value="admin" required></label>
       <label>密碼<input name="password" type="password" autocomplete="current-password" value="admin123" required></label>
       <div class="actions"><button class="btn primary" type="submit">登入</button></div>
@@ -369,7 +385,7 @@ const APP_HTML = `<!doctype html>
   </section>
 
   <section id="appView" class="hidden">
-    <header><div class="shell topbar"><div class="brand"><span class="mark">B</span><span>BPM Portal</span></div><div class="userline" id="userLine"></div><button class="btn" id="logoutBtn">登出</button></div></header>
+    <header><div class="shell topbar"><div class="brand"><span class="mark">B</span><span>BPM Portal</span></div><div class="userline" id="userLine"></div><label class="appearance-picker">瀏覽風格<select class="style-select" aria-label="切換瀏覽風格"><option value="classic">經典藍白</option><option value="night">夜間深色</option><option value="mint">清新薄荷</option><option value="contrast">高對比</option><option value="paper">暖色紙感</option></select></label><button class="btn" id="logoutBtn">登出</button></div></header>
     <main class="shell layout">
       <nav id="nav"></nav>
       <section id="content"></section>
@@ -387,6 +403,20 @@ const APP_HTML = `<!doctype html>
     };
     const $ = (id) => document.getElementById(id);
     const escapeHtml = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const styleNames = ['classic','night','mint','contrast','paper'];
+    function applyStyle(style) {
+      const selected = styleNames.includes(style) ? style : 'classic';
+      document.body.dataset.style = selected;
+      document.querySelectorAll('.style-select').forEach(select => { select.value = selected; });
+    }
+    let savedStyle = 'classic';
+    try { savedStyle = localStorage.getItem('bpm-browse-style') || savedStyle; } catch {}
+    applyStyle(savedStyle);
+    document.querySelectorAll('.style-select').forEach(select => select.addEventListener('change', event => {
+      const style = event.currentTarget.value;
+      applyStyle(style);
+      try { localStorage.setItem('bpm-browse-style', style); } catch {}
+    }));
     const isAdmin = () => state.user?.system_role === 'admin';
     const canAnnouncement = () => isAdmin() || state.user?.roles?.includes('announcement_owner');
 
